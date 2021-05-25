@@ -11,34 +11,60 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nouveau produit"
+        android:textColor="@color/green"
         android:textSize="35dp"
-        android:layout_marginTop="1000dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"></TextView>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></TextView>
+
+    <LinearLayout
+        android:id="@+id/horizon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newProduct">
+
+        <EditText
+            android:id="@+id/productName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Nom du produit"
+            android:textAlignment="center"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toTopOf="@id/productGTIN"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"></EditText>
+
+        <EditText
+            android:id="@+id/productGTIN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="GTIN du produit"
+            android:textAlignment="center"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toTopOf="@+id/productDate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.488"
+            app:layout_constraintStart_toStartOf="parent"></EditText>
+
+    </LinearLayout>
+
 
     <EditText
-        android:id="@+id/productName"
+        android:id="@+id/productDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Nom du produit"
+        android:textAlignment="center"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newProduct"
-        app:layout_constraintBottom_toTopOf="@id/productGTIN"
-        ></EditText>
-
-    <EditText
-        android:id="@+id/productGTIN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="GTIN du produit"
-        android:textStyle="italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/productName"
-        app:layout_constraintBottom_toTopOf="@+id/buttonValidate"></EditText>
+        app:layout_constraintTop_toBottomOf="@+id/horizon"></EditText>
 
     <Button
         android:id="@+id/buttonValidate"
@@ -47,7 +73,9 @@
         android:text="Valider"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/productGTIN" />
+        app:layout_constraintTop_toBottomOf="@+id/productDate"
+        app:layout_constraintVertical_bias="0.116" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

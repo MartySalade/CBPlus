@@ -26,9 +26,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<Product> products = new ArrayList<>();
-    ListView list;
-
+    public static ArrayList<Product> products = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +35,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        list = findViewById(R.id.listView);
+        ListView list = findViewById(R.id.listView);
         Adapter adapter = new Adapter(this, products);
         list.setAdapter(adapter);
-
-        String[] tmp = getIntent().getStringArrayExtra("product");
-        if (tmp != null)
-            products.add(new Product(tmp[0], tmp[1]));
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -52,6 +46,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, newProduct.class));
             }
         });
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        String[] tmp = getIntent().getStringArrayExtra("product");
+        if (tmp != null)
+            products.add(new Product(tmp[0], tmp[1]));
     }
 
     @Override
