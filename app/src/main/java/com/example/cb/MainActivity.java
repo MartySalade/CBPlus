@@ -53,7 +53,17 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         String[] tmp = getIntent().getStringArrayExtra("product");
         if (tmp != null)
-            products.add(new Product(tmp[0], tmp[1]));
+        {
+            for (int i = 0; i < products.size(); i++)
+            {
+                if (products.get(i).getGtin().equals(tmp[1]))
+                {
+                    products.get(i).setDate(tmp[2]);
+                    return;
+                }
+            }
+            products.add(new Product(tmp[0], tmp[1], tmp[2]));
+        }
     }
 
     @Override

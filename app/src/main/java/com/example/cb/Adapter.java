@@ -25,9 +25,11 @@ public class Adapter extends ArrayAdapter<Product> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.activity_listview, parent, false);
         TextView name = convertView.findViewById(R.id.displayName);
         TextView gtin = convertView.findViewById(R.id.displayGTIN);
+        TextView date = convertView.findViewById(R.id.displayDate);
 
         name.setText(product.getName());
         gtin.setText(product.getGtin());
+        date.setText(product.getDate());
 
         return convertView;
     }
