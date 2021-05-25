@@ -16,7 +16,10 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></TextView>
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="25dp"
+        android:textAlignment="center"
+        android:fontFamily="@font/poppins_bold"></TextView>
 
     <LinearLayout
         android:id="@+id/horizon"
@@ -38,7 +41,8 @@
             android:textStyle="italic"
             app:layout_constraintBottom_toTopOf="@id/productGTIN"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"></EditText>
+            app:layout_constraintStart_toStartOf="parent"
+            android:fontFamily="@font/poppins"></EditText>
 
         <EditText
             android:id="@+id/productGTIN"
@@ -51,7 +55,8 @@
             app:layout_constraintBottom_toTopOf="@+id/productDate"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.488"
-            app:layout_constraintStart_toStartOf="parent"></EditText>
+            app:layout_constraintStart_toStartOf="parent"
+            android:fontFamily="@font/poppins"></EditText>
 
     </LinearLayout>
 
@@ -61,10 +66,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horizon"></EditText>
+        app:layout_constraintTop_toBottomOf="@+id/horizon"
+        android:fontFamily="@font/poppins"></EditText>
 
     <Button
         android:id="@+id/buttonValidate"
@@ -76,6 +81,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/productDate"
-        app:layout_constraintVertical_bias="0.116" />
+        app:layout_constraintVertical_bias="0.116"
+        android:fontFamily="@font/poppins"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

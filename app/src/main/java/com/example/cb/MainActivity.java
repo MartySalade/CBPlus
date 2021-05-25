@@ -19,7 +19,9 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +36,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        TextView empty = findViewById(R.id.empty);
+
+        /*if (products.size() == 0)
+            empty.setText("Vous pouvez ajouter un premier produit en appuyant sur le bouton plus");
+        else
+            empty.setText("");*/
+
 
         ListView list = findViewById(R.id.listView);
         Adapter adapter = new Adapter(this, products);
@@ -54,6 +64,10 @@ public class MainActivity extends AppCompatActivity {
         String[] tmp = getIntent().getStringArrayExtra("product");
         if (tmp != null)
         {
+            TextView empty = findViewById(R.id.empty);
+            ImageView emptyImage = findViewById(R.id.emptyImage);
+            empty.setText("");
+            emptyImage.setImageResource(0);
             for (int i = 0; i < products.size(); i++)
             {
                 if (products.get(i).getGtin().equals(tmp[1]))
