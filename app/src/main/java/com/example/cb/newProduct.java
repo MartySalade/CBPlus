@@ -1,11 +1,13 @@
 package com.example.cb;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class newProduct extends AppCompatActivity {
 
@@ -18,7 +20,16 @@ public class newProduct extends AppCompatActivity {
         validateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(newProduct.this, MainActivity.class));
+                EditText name = findViewById(R.id.productName);
+                EditText gtin = findViewById(R.id.productGTIN);
+
+                String name_ = name.getText().toString();
+                String gtin_ = gtin.getText().toString();
+
+                //while (name_.isEmpty() || gtin_.isEmpty())
+                Intent intent = new Intent(newProduct.this, MainActivity.class);
+                intent.putExtra("product", new String[] {name_, gtin_});
+                startActivity(intent);
             }
         });
     }

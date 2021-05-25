@@ -9,13 +9,26 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Pair;
 import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    ArrayList<Product> products = new ArrayList<>();
+    ListView list;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +36,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        list = findViewById(R.id.listView);
+        Adapter adapter = new Adapter(this, products);
+        list.setAdapter(adapter);
+
+        String[] tmp = getIntent().getStringArrayExtra("product");
+        if (tmp != null)
+            products.add(new Product(tmp[0], tmp[1]));
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
