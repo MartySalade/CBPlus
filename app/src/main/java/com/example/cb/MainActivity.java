@@ -51,7 +51,15 @@ public class MainActivity extends AppCompatActivity {
         animationDrawable.setExitFadeDuration(4000);
         animationDrawable.start();
 
-        TextView empty = findViewById(R.id.empty);
+        if (products.size() > 0)
+        {
+            TextView empty = findViewById(R.id.empty);
+            ImageView emptyImage = findViewById(R.id.emptyImage);
+            ImageView roundCorners = findViewById(R.id.roundCorners);
+            empty.setText("");
+            emptyImage.setImageResource(0);
+            roundCorners.setImageResource(0);
+        }
 
         ListView list = findViewById(R.id.listView);
         Adapter adapter = new Adapter(this, products);
@@ -89,6 +97,18 @@ public class MainActivity extends AppCompatActivity {
             products.add(new Product(tmp[0], tmp[1], tmp[2], tmp[3]));
         }
     }
+
+    @Override
+    public void onBackPressed() {
+
+        //add what you need, for example if you want to start another activity:
+        Intent intent = new Intent(MainActivity.this, MainActivity.class);
+        //or if you want to close:
+        this.finish();
+        //or
+        finish();
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

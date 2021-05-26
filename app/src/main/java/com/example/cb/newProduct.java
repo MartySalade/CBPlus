@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,7 +40,7 @@ public class newProduct extends AppCompatActivity {
 
         TextView text = findViewById(R.id.text_view);
         Spinner dropdown = findViewById(R.id.type);
-        String[] items = new String[]{"Défault", "Viande", "Fruit / Légume", "Liquide", "Autre"};
+        String[] items = new String[]{"Défault", "Viande", "Légume", "Fruit", "Liquide", "Produit laitier", "Féculent", "Produit ménager"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         dropdown.setAdapter(adapter);
 
@@ -61,6 +62,15 @@ public class newProduct extends AppCompatActivity {
         animationDrawable.setEnterFadeDuration(2000);
         animationDrawable.setExitFadeDuration(4000);
         animationDrawable.start();
+
+        ImageButton cancel = findViewById(R.id.cancel);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(newProduct.this, MainActivity.class));
+            }
+        });
+
 
         Button validateButton = findViewById(R.id.buttonValidate);
         validateButton.setOnClickListener(new View.OnClickListener() {

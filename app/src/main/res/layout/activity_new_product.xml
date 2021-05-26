@@ -8,6 +8,17 @@
     android:background="@drawable/back_list"
     tools:context=".newProduct">
 
+
+    <ImageButton
+        android:id="@+id/cancel"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/close"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></ImageButton>
+
     <TextView
         android:id="@+id/newProduct"
         android:layout_width="wrap_content"

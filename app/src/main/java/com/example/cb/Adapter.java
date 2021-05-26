@@ -36,12 +36,21 @@ public class Adapter extends ArrayAdapter<Product> {
         type.setText("Type: " + product.getType());
         if (product.getType().equals("Viande"))
             foodImage.setImageResource(R.drawable.meat);
-        else if (product.getType().equals("Fruit / Légume"))
+        else if (product.getType().equals("Légume"))
             foodImage.setImageResource(R.drawable.harvest);
         else if (product.getType().equals("Liquide"))
             foodImage.setImageResource(R.drawable.water);
         else if (product.getType().equals("Défault"))
             foodImage.setImageResource(R.drawable.diet);
+        else if (product.getType().equals("Produit ménager"))
+            foodImage.setImageResource(R.drawable.menage);
+        else if (product.getType().equals("Produit laitier"))
+            foodImage.setImageResource(R.drawable.milk);
+        else if (product.getType().equals("Fruit"))
+            foodImage.setImageResource(R.drawable.fruits);
+        else if (product.getType().equals("Féculent"))
+            foodImage.setImageResource(R.drawable.ravioli);
+
 
         return convertView;
     }
