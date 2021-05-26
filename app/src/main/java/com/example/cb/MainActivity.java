@@ -1,6 +1,8 @@
 package com.example.cb;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -8,6 +10,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -37,13 +40,14 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        ConstraintLayout layout = findViewById(R.id.background);
+        AnimationDrawable animationDrawable = (AnimationDrawable) layout.getBackground();
+        animationDrawable.setEnterFadeDuration(2000);
+        animationDrawable.setExitFadeDuration(4000);
+        animationDrawable.start();
+
+
         TextView empty = findViewById(R.id.empty);
-
-        /*if (products.size() == 0)
-            empty.setText("Vous pouvez ajouter un premier produit en appuyant sur le bouton plus");
-        else
-            empty.setText("");*/
-
 
         ListView list = findViewById(R.id.listView);
         Adapter adapter = new Adapter(this, products);
@@ -96,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://cb-plus.eu/")));
             return true;
         }
 

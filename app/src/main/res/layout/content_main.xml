@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/back_list"
+    android:id="@+id/background"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <TextView
@@ -13,7 +15,7 @@
         android:fontFamily="@font/poppins_bold"
         android:padding="5dp"
         android:textAlignment="center"
-        android:textColor="@color/green"
+        android:textColor="@color/black"
         android:textSize="14dp"
         android:text="Vous pouvez ajouter un premier produit en appuyant sur le bouton plus"
         android:textStyle="italic"
@@ -41,6 +43,9 @@
         android:dividerHeight="1dp"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-168dp" />
+        tools:layout_editor_absoluteY="-168dp" >
+
+    </ListView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
