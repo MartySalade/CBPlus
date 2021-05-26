@@ -5,11 +5,21 @@ public class Product {
     private String name;
     private String gtin;
     private String date;
+    private String type;
 
-    public Product(String name, String gtin, String date) {
+    public Product(String name, String gtin, String date, String type) {
         this.name = name;
         this.gtin = gtin;
         this.date = date;
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getDate() {

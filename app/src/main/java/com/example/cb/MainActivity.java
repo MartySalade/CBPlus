@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         animationDrawable.setExitFadeDuration(4000);
         animationDrawable.start();
 
-
         TextView empty = findViewById(R.id.empty);
 
         ListView list = findViewById(R.id.listView);
@@ -70,8 +69,10 @@ public class MainActivity extends AppCompatActivity {
         {
             TextView empty = findViewById(R.id.empty);
             ImageView emptyImage = findViewById(R.id.emptyImage);
+            ImageView roundCorners = findViewById(R.id.roundCorners);
             empty.setText("");
             emptyImage.setImageResource(0);
+            roundCorners.setImageResource(0);
             for (int i = 0; i < products.size(); i++)
             {
                 if (products.get(i).getGtin().equals(tmp[1]))
@@ -80,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
             }
-            products.add(new Product(tmp[0], tmp[1], tmp[2]));
+            products.add(new Product(tmp[0], tmp[1], tmp[2], tmp[3]));
         }
     }
 

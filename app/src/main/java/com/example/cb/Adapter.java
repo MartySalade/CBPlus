@@ -26,10 +26,12 @@ public class Adapter extends ArrayAdapter<Product> {
         TextView name = convertView.findViewById(R.id.displayName);
         TextView gtin = convertView.findViewById(R.id.displayGTIN);
         TextView date = convertView.findViewById(R.id.displayDate);
+        TextView type = convertView.findViewById(R.id.displayType);
 
         name.setText(product.getName());
-        gtin.setText(product.getGtin());
+        gtin.setText("GTIN: " + product.getGtin());
         date.setText(product.getDate());
+        type.setText("Type: " + product.getType());
 
         return convertView;
     }

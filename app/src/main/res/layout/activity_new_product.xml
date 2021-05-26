@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/background2"
+    android:background="@drawable/back_list"
     tools:context=".newProduct">
 
     <TextView
@@ -11,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nouveau produit"
-        android:textColor="@color/green"
+        android:textColor="@color/black"
         android:textSize="35dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,27 +62,57 @@
 
     </LinearLayout>
 
-
-    <EditText
-        android:id="@+id/productDate"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/horizon2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
+        android:orientation="horizontal"
+        android:padding="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horizon"
-        android:fontFamily="@font/poppins"></EditText>
+        app:layout_constraintTop_toBottomOf="@+id/horizon">
+
+        <EditText
+            android:id="@+id/productDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins"></EditText>
+
+        <TextView
+            android:id="@+id/text_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="Selectionner un type"
+            android:fontFamily="@font/poppins"
+            />
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:spinnerMode="dropdown"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            app:layout_anchorGravity="bottom"></androidx.appcompat.widget.AppCompatSpinner>
+
+    </LinearLayout>
+
+
 
     <Button
         android:id="@+id/buttonValidate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Valider"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/productDate"
+        app:layout_constraintTop_toBottomOf="@+id/horizon2"
         app:layout_constraintVertical_bias="0.116"
         android:fontFamily="@font/poppins"/>
 
