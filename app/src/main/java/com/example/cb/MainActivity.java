@@ -11,6 +11,7 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -23,6 +24,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -70,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
             TextView empty = findViewById(R.id.empty);
             ImageView emptyImage = findViewById(R.id.emptyImage);
             ImageView roundCorners = findViewById(R.id.roundCorners);
+            ImageView foodImage = findViewById(R.id.foodImage);
             empty.setText("");
             emptyImage.setImageResource(0);
             roundCorners.setImageResource(0);
