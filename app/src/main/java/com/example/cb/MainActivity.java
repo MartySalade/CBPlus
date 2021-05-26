@@ -45,12 +45,15 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // Animated background
         ConstraintLayout layout = findViewById(R.id.background);
         AnimationDrawable animationDrawable = (AnimationDrawable) layout.getBackground();
         animationDrawable.setEnterFadeDuration(2000);
         animationDrawable.setExitFadeDuration(4000);
         animationDrawable.start();
 
+        // If there already are products we don't need to show the logo and the welcome sentence
+        // So we remove them by clearing values inside the two ImageViews and the TextView
         if (products.size() > 0)
         {
             TextView empty = findViewById(R.id.empty);
@@ -61,10 +64,12 @@ public class MainActivity extends AppCompatActivity {
             roundCorners.setImageResource(0);
         }
 
+        // We find our listView and create a new Adapter using 'products' the list of all our products
         ListView list = findViewById(R.id.listView);
         Adapter adapter = new Adapter(this, products);
         list.setAdapter(adapter);
 
+        // Big 'PLUS' button in the MainActivity. When button is pressed, it lead the user to the Add Product page
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,15 +82,22 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onResume(){
         super.onResume();
+        // We get the info from Add Product activity
         String[] tmp = getIntent().getStringArrayExtra("product");
         if (tmp != null)
         {
+            // If there are info passed, we get the views
             TextView empty = findViewById(R.id.empty);
             ImageView emptyImage = findViewById(R.id.emptyImage);
             ImageView roundCorners = findViewById(R.id.roundCorners);
+
+            // We disable the welcome sentence and logo because we're going to print data in the list view
             empty.setText("");
             emptyImage.setImageResource(0);
             roundCorners.setImageResource(0);
+
+            // We loop through the list of product and if we find that a product already exist (by checking the GTIN), we just change the expiration date for the product
+            // Otherwise we add the product to the ArrayList
             for (int i = 0; i < products.size(); i++)
             {
                 if (products.get(i).getGtin().equals(tmp[1]))
@@ -101,11 +113,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        //add what you need, for example if you want to start another activity:
+        //If back button is pressed we go back to this activity without changing anything
         Intent intent = new Intent(MainActivity.this, MainActivity.class);
-        //or if you want to close:
         this.finish();
-        //or
         finish();
     }
 
@@ -124,26 +134,27 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        // If 'Découvrir CB+' is pressed we lead the user through the official website
         if (id == R.id.action_settings) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://cb-plus.eu/")));
             return true;
         }
+
+        // If the user want to sort the product we compare 'sum' filed of every product in the list and put the lowest one first
         if (id == R.id.action_sort) {
-            Toast.makeText(MainActivity.this, Integer.toString(products.get(0).getSum()), Toast.LENGTH_SHORT).show();
             Collections.sort(products, new Comparator<Product>() {
                 @Override
                 public int compare(Product o1, Product o2) {
                     return o1.getSum() - o2.getSum();
                 }
             });
+
+            // Then we update the list to make it appear instantly
             Intent intent = getIntent();
             finish();
             startActivity(intent);
             return true;
         }
-
-
         return super.onOptionsItemSelected(item);
     }
 }
