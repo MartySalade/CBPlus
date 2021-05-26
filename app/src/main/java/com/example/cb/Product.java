@@ -6,12 +6,22 @@ public class Product {
     private String gtin;
     private String date;
     private String type;
+    private int sum = 0;
 
     public Product(String name, String gtin, String date, String type) {
         this.name = name;
         this.gtin = gtin;
         this.date = date;
         this.type = type;
+        this.sum = Integer.parseInt(date.substring(0, 2)) + (Integer.parseInt(date.substring(3, 5)) * 31) + (Integer.parseInt(date.substring(6, 10)) * 365);
+    }
+
+    public int getSum() {
+        return sum;
+    }
+
+    public void setSum(int sum) {
+        this.sum = sum;
     }
 
     public String getType() {

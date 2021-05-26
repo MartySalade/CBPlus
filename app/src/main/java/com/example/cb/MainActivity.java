@@ -27,8 +27,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -72,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
             TextView empty = findViewById(R.id.empty);
             ImageView emptyImage = findViewById(R.id.emptyImage);
             ImageView roundCorners = findViewById(R.id.roundCorners);
-            ImageView foodImage = findViewById(R.id.foodImage);
             empty.setText("");
             emptyImage.setImageResource(0);
             roundCorners.setImageResource(0);
@@ -107,6 +109,20 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://cb-plus.eu/")));
             return true;
         }
+        if (id == R.id.action_sort) {
+            Toast.makeText(MainActivity.this, Integer.toString(products.get(0).getSum()), Toast.LENGTH_SHORT).show();
+            Collections.sort(products, new Comparator<Product>() {
+                @Override
+                public int compare(Product o1, Product o2) {
+                    return o1.getSum() - o2.getSum();
+                }
+            });
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
+            return true;
+        }
+
 
         return super.onOptionsItemSelected(item);
     }
