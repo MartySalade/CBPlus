@@ -34,10 +34,6 @@ public class Product {
         return type;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public String getDate() {
         return date;
     }
@@ -58,7 +54,4 @@ public class Product {
         return gtin;
     }
 
-    public void setGtin(String gtin) {
-        this.gtin = gtin;
-    }
 }

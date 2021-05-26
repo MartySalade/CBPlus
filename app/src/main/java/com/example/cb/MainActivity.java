@@ -114,7 +114,6 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
 
         //If back button is pressed we go back to this activity without changing anything
-        Intent intent = new Intent(MainActivity.this, MainActivity.class);
         this.finish();
         finish();
     }
