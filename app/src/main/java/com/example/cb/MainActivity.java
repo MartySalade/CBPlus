@@ -142,13 +142,21 @@ public class MainActivity extends AppCompatActivity {
 
         // If the user want to sort the product we compare 'sum' filed of every product in the list and put the lowest one first
         if (id == R.id.action_sort) {
-            Collections.sort(products, new Comparator<Product>() {
-                @Override
-                public int compare(Product o1, Product o2) {
-                    return o1.getSum() - o2.getSum();
-                }
-            });
-
+            // We check that already two products are in the list to sort them. We tell the user otherwise
+            if (products.size() < 2)
+            {
+                Toast.makeText(MainActivity.this, "Vous devez ajouter au moins 2 produits avant de pouvoir les trier", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+            else
+            {
+                Collections.sort(products, new Comparator<Product>() {
+                    @Override
+                    public int compare(Product o1, Product o2) {
+                        return o1.getSum() - o2.getSum();
+                    }
+                });
+            }
             // Then we update the list to make it appear instantly
             Intent intent = getIntent();
             finish();
